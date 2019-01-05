@@ -1,0 +1,6 @@
+{% import 'macro.html' as macro %}
+
+{% for comment in comments %}
+    {{ macro.render_comment(comment) }}
+    {{ macro.render_comment(comment) }}
+{% endfor %}

@@ -4,5 +4,5 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 
 class NameForm(FlaskForm):
-    name = StringField("你叫什么名字?", validators=[Required()])        # 该项为必填项
-    submit = SubmitField('提交')
+    name = StringField('请输入你的名字（必须为英文）', validators=[Required()])
+    submit = SubmitField('登录')

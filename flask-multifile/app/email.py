@@ -10,7 +10,7 @@ def send_async_email(app, msg):
         mail.send(msg)
 
 
-def send_mail(to, subject, template, **kwargs):
+def send_email(to, subject, template, **kwargs):
     app = current_app._get_current_object()                                     # 获取程序实例app
     msg = Message(app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + ' ' + subject,
             sender=app.config['FLASKY_MAIL_SENDER'], recipients=[to])           # 邮件信息：收件人、主题、内容

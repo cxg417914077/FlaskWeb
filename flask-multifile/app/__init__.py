@@ -7,7 +7,6 @@ from config import config
 from flask_login import LoginManager
 
 
-# 对扩展类实例化
 bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
@@ -17,11 +16,11 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 def create_app(config_name):
-    app = Flask(__name__)                               # 创建一个程序实例
-    app.config.from_object(config[config_name])         # 选择环境配置(开发、测试、生产)
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
-    bootstrap.init_app(app)                             # 扩展实例对程序实例app进行包装
+    bootstrap.init_app(app)
     mail.init_app(app)
     moment.init_app(app)
     db.init_app(app)

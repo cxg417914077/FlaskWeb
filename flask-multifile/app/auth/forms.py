@@ -53,3 +53,12 @@ class PasswordResetForm(FlaskForm):
         if User.query.filter_by(email=field.data).first() is None:
             raise ValidationError('邮箱不存在')
 
+
+class ChangeEmailForm(FlaskForm):
+    email = StringField('邮箱', validators=[Required(), Length(1, 64), Email()])
+    password = PasswordField('密码', validators=[Required()])
+    submit = SubmitField('修改邮箱')
+
+    def validate_email(self, firld):
+        if User.query.filter_by(email=firld.data).first():
+            raise ValidationError('邮箱已被注册')

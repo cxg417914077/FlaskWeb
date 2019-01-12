@@ -108,7 +108,7 @@ def password_reset_request():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
-            token = user.generate_confirmation_token()
+            token = user.generate_reset_token()
             send_email(user.email, '重置密码',
                         'auth/email/reset_password',
                         user=user, token=token,
